@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35.382" height="35.382" viewBox="0 0 35.382 35.382">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_813" data-name="Rectangle 813" width="35.382" height="35.382" transform="translate(0 0)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="tiktok" transform="translate(0 0)">
+    <g id="Group_1646" data-name="Group 1646" clip-path="url(#clip-path)">
+      <path id="Path_4313" data-name="Path 4313" d="M35.382,17.691A17.691,17.691,0,1,1,17.691,0,17.691,17.691,0,0,1,35.382,17.691" fill="#04b5ff"/>
+      <path id="Path_4314" data-name="Path 4314" d="M26.877,15.652c-.181.017-.363.027-.544.027a5.91,5.91,0,0,1-4.947-2.673v9.1a6.727,6.727,0,1,1-6.728-6.728c.141,0,.278.013.416.022v3.315a3.349,3.349,0,0,0-.416-.042,3.434,3.434,0,0,0,0,6.868,3.518,3.518,0,0,0,3.572-3.391l.034-15.46h3.171a5.908,5.908,0,0,0,5.445,5.274v3.685" fill="#fff"/>
+    </g>
+  </g>
+</svg>

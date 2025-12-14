@@ -1,0 +1,163 @@
+:root {
+  text-rendering: geometricPrecision;
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "AlfaSlab";
+  src: url("./assets/AlfaSlabOne-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Helvetica";
+  src: url("./assets/Helvetica.ttf");
+}
+
+@font-face {
+  font-family: "HelveticaBold";
+  src: url("./assets/Helvetica-Bold.ttf");
+}
+
+@font-face {
+  font-family: "SegoeUI";
+  src: url("./assets/SegoeUI.ttf");
+}
+
+@font-face {
+  font-family: "MinionPro";
+  src: url("./assets/minion-pro/MinionPro-Bold.woff");
+}
+
+@font-face {
+  font-family: "SilkaRm";
+  src: url("./assets/silka-rm-regular.woff2");
+}
+
+@font-face {
+  font-family: "Eskell";
+  src: url("./assets/Eksell\ Display\ Stencil.otf");
+}
+
+@font-face {
+  font-family: "EskellNormal";
+  src: url("./assets/Eksell\ Display\ Large.otf");
+}
+@font-face {
+  font-family: "Bestaline";
+  src: url("./assets/Bestaline.ttf");
+}
+
+body {
+  position: relative;
+  background: #e6e6e6;
+  font-family: "SilkaRm";
+}
+
+input {
+  padding: 0.5rem 1rem;
+  font-size: 1.6rem;
+  min-width: 10rem;
+  width: 70%;
+}
+
+label {
+  color: #000;
+  margin-top: 2rem;
+  display: block;
+  font-size: 2rem;
+}
+
+input[type="submit"] {
+  width: 13rem;
+  display: block;
+}
+
+textarea {
+  display: block;
+  width: 60%;
+  min-height: 10rem;
+  margin-top: 1rem;
+}
+
+.card {
+  perspective: 150rem;
+  position: relative;
+  width: 100%;
+  height: 35rem;
+  box-shadow: none;
+  background: none;
+}
+
+.card-side {
+  height: 35rem;
+  border-radius: 15px;
+  transition: all 1.2s ease;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  color: white;
+}
+
+.card-side.back {
+  transform: rotateY(-180deg);
+  background-color: #4158d0;
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  );
+}
+
+.card-side.front {
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+.card:hover .card-side.front {
+  transform: rotateY(180deg);
+}
+
+.card:hover .card-side.back {
+  transform: rotateY(0deg);
+}
+
+h1 {
+  font-size: 2.5rem; /* 3 times the body text */
+}
+
+h2 {
+  font-size: 2rem; /* 2 times the body text */
+}
+
+h3 {
+  font-size: 1.5rem; /* 1 ½ times the body text */
+}
+
+@media only screen and (max-width: 900px) {
+  tr {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.4rem;
+    font-weight: normal;
+  }
+}
+
+table {
+  margin: 1rem 0;
+}
+
+td {
+  border: 1px solid #707070;
+  padding: 1rem;
+}

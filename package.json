@@ -1,0 +1,65 @@
+{
+  "name": "pioneer",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@mikecousins/react-pdf": "^5.5.1",
+    "@react-pdf/renderer": "^3.1.13",
+    "axios": "^0.27.2",
+    "babel-preset-es2015": "^6.24.1",
+    "classnames": "^2.3.2",
+    "draft-js": "^0.11.7",
+    "draft-js-export-html": "^1.4.1",
+    "draft-js-import-html": "^1.4.1",
+    "framer-motion": "^4.1.17",
+    "jspdf": "^2.5.1",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.1",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "react-helmet": "^6.1.0",
+    "react-image-crop": "8.6.12",
+    "react-intersection-observer": "^9.4.0",
+    "react-meta-tags": "^1.0.1",
+    "react-multi-carousel": "^2.8.2",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^6.4.1",
+    "react-router-hash-link": "^2.4.3",
+    "react-scripts": "4.0.0",
+    "sort-by": "^1.2.0",
+    "start": "^5.1.0",
+    "styled-components": "^5.3.5",
+    "uuid": "^9.0.0",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build",
+    "test": "react-scripts --openssl-legacy-provider test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@svgr/cli": "^6.4.0"
+  }
+}

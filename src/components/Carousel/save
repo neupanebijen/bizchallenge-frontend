@@ -1,0 +1,301 @@
+import React, { useState, useMemo } from "react"
+import cn from "classnames"
+import styled, { keyframes } from "styled-components"
+import { motion } from "framer-motion"
+import "./styles.css"
+
+import Image1 from "../../assets/Slider1.JPG"
+
+import Slider1 from "../../assets/SliderContrast15.JPG"
+import Slider3 from "../../assets/SliderContrast1.JPG"
+import Slider2 from "../../assets/SliderContrast3.JPG"
+import Slider4 from "../../assets/SliderContrast9.JPG"
+import useWindowSize from "../../hooks/useWindowSize"
+
+/*
+ * Read the blog post here:
+ * https://letsbuildui.dev/articles/building-a-vertical-carousel-component-in-react
+ */
+
+let data = [
+  {
+    key: 1,
+    content: Image1,
+  },
+  {
+    key: 2,
+    content: Slider1,
+  },
+  {
+    key: 3,
+    content: Slider2,
+  },
+  {
+    key: 4,
+    content: Slider4,
+  },
+  {
+    key: 5,
+    content: Slider3,
+  },
+]
+
+// const animateMainClipPath = keyframes`
+
+//   100% {
+//     clip-path: polygon(20% 0%, 80% 0, 90% 100%, 10% 100%);
+//   }
+// `
+
+// const animateUpperClipPath = keyframes`
+
+//   100% {
+//     clip-path: polygon(10% 0%, 90% 0, 100% 100%, 0% 100%);
+//   }
+// `
+
+// const animateLowerClipPath = keyframes`
+
+//     clip-path: polygon(30% 0%, 70% 0, 80% 100%, 20% 100%);
+
+// `
+// saving width for later
+
+const SlideCard = styled(motion.div)`
+  position: relative;
+  width: ${(props) => (props.lowerMenuActive ? "60vw" : "40vw")};
+  padding: ${(props) => (props.lowerMenuActive ? "6rem 0" : "0")};
+
+  height: 60vh;
+
+  opacity: ${(props) => {
+    if (props.index < 0 || props.index > 4) return "0"
+  }};
+  cursor: pointer;
+
+  clip-path: ${(props) =>
+    `polygon(
+    15% 10%,
+    25% 8%,
+    35% 6.5%,
+    45% 5%,
+    55% 4%,
+    65% 3.25%,
+    75% 2.75%,
+    85% 2.25%,
+    95% 2%,
+    100% 2%,
+    90% 99%,
+    75% 97.5%,
+    60% 96.25%,
+    50% 96.1%,
+    40% 96.25%,
+    25% 97.5%,
+    10% 98%,
+    0% 99%
+  )`};
+
+  transition: width 0.2s linear, padding 0.2s linear, clip-path 1s;
+  will-change: width, padding;
+
+  &.mainItem {
+    clip-path: polygon(20% 0%, 80% 0, 90% 100%, 10% 100%);
+  }
+  &.upperItem {
+    clip-path: polygon(10% 0%, 90% 0, 100% 100%, 0% 100%);
+  }
+
+  &.lowerItem {
+    clip-path: polygon(30% 0%, 70% 0, 80% 100%, 20% 100%);
+  }
+
+  @media (max-width: 700px) {
+    clip-path: none;
+    width: 90vw;
+    height: 30vh;
+  }
+`
+// }
+// clip-path: ${(props) =>
+//   !props.lowerMenuActive
+//     ? `polygon(
+//   15% 10%,
+//   25% 8%,
+//   35% 6.5%,
+//   45% 5%,
+//   55% 4%,
+//   65% 3.25%,
+//   75% 2.75%,
+//   85% 2.25%,
+//   95% 2%,
+//   100% 2%,
+//   90% 99%,
+//   75% 97.5%,
+//   60% 96.25%,
+//   50% 96.1%,
+//   40% 96.25%,
+//   25% 97.5%,
+//   10% 98%,
+//   0% 99%
+// )`
+//     : props.activeIndex === props.i
+//     ? `polygon(20% 0%, 80% 0, 90% 100%, 10% 100%)`
+//     : props.activeIndex < props.i
+//     ? `polygon(10% 0%, 90% 0, 100% 100%, 0% 100%)`
+//     : `polygon(30% 0%, 70% 0, 80% 100%, 20% 100%)`};
+
+const VerticalCarousel = ({ activeIndex, changePageData, lowerMenuActive }) => {
+  // Usd to determine the height/spacing of each item
+  const itemHeight = window.innerHeight * 0.58
+
+  // Used to determine which items should be visible. this prevents the "ghosting" animation
+  const visibleStyleThreshold = 50
+
+  const determinePlacement = (itemIndex) => {
+    // If these match, the item is active
+    if (activeIndex === itemIndex) return 0
+
+    return (itemIndex - activeIndex) * itemHeight
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="carousel"
+    >
+      <div className="slides">
+        <div className="carousel-inner">
+          {data.map((item, i) => (
+            <CardComponent
+              data={data}
+              activeIndex={activeIndex}
+              i={i}
+              item={item}
+              determinePlacement={determinePlacement}
+              lowerMenuActive={lowerMenuActive}
+              changePageData={changePageData}
+              visibleStyleThreshold={visibleStyleThreshold}
+            />
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+const CardComponent = ({
+  data,
+  activeIndex,
+  i,
+  determinePlacement,
+  item,
+  lowerMenuActive,
+  changePageData,
+  visibleStyleThreshold,
+}) => {
+  const size = useWindowSize()
+  const cardAnimationY = useMemo(() => {
+    let arr = [25, -10]
+    for (let i = 0; i < 10; i++) {
+      arr = [...arr, 25, -10]
+    }
+    return arr
+  }, [])
+
+  const imageAnimationY = useMemo(() => {
+    let arr = [-25, 10]
+    for (let i = 0; i < 10; i++) {
+      arr = [...arr, -25, 10]
+    }
+    return arr
+  }, [])
+
+  const getClassName = (activeIndex, i) => {
+    if (activeIndex === i) {
+      console.log("middle item")
+      return "mainItem"
+    } else if (activeIndex < i) {
+      console.log("itemAbove")
+      return "upperItem"
+    } else if (activeIndex > i) {
+      console.log("itemBelow")
+      return "lowerItem"
+    }
+
+    return ""
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={() => {
+        if (i === data.length - 1 && activeIndex === 0) return
+        if (i === 0 && activeIndex === data.length - 1) return
+        changePageData(i)
+      }}
+      className={cn("carousel-item", {
+        active: activeIndex === i,
+        visible: Math.abs(determinePlacement(i)) <= visibleStyleThreshold,
+      })}
+      key={item.id}
+      style={{
+        transform: `translateY(${determinePlacement(i)}px) translateX(${
+          lowerMenuActive
+            ? -30
+            : activeIndex - i === 0
+            ? 0
+            : activeIndex - i > 0
+            ? 5
+            : -7
+        }vw) scale(${lowerMenuActive ? 1 : activeIndex === i ? 1 : 0.8})`,
+        opacity: `${
+          activeIndex === i
+            ? 1
+            : activeIndex - i === 1
+            ? 1
+            : activeIndex - i === -1
+            ? 1
+            : 1
+        }`,
+      }}
+    >
+      <SlideCard
+        width="100px"
+        height="100px"
+        lowerMenuActive={lowerMenuActive}
+        className={lowerMenuActive && getClassName(activeIndex, i)}
+        i={i}
+        activeIndex={activeIndex}
+        animate={{ y: cardAnimationY }}
+        transition={{
+          type: "linear",
+          repeat: "Infinity",
+          duration: 70,
+        }}
+      >
+        <motion.img
+          src={item.content}
+          style={{
+            height: "117%",
+            minWidth: "100%",
+            opacity: i === 0 ? 0 : 1,
+          }}
+          animate={{
+            y: imageAnimationY,
+          }}
+          transition={{
+            type: "linear",
+            repeat: "Infinity",
+            duration: 70,
+          }}
+        />
+      </SlideCard>
+    </button>
+  )
+}
+
+// }translateX(${i > activeIndex ? 200 : 100}px)
+
+export default VerticalCarousel
