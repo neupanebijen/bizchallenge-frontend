@@ -724,7 +724,7 @@ const MainComponent = ({ title, data, updatePackage, isAdmin }) => {
           <br />
           <h3>OUR VALUES</h3>
           <p>  
-            Pioneer Adventure Pvt. Lt. is managed by Sherpas with a combined mountaineering experience of 6
+            Buisness Challenges is managed by Sherpas with a combined mountaineering experience of 6
             decades. All our personnel are from the Mountain regions of Nepal and their care and safety is as
             important to us as our clients. We do not cut costs, but offer you competitive rates that does not affect or
             jeopardize the safety of the members of the expedition.
@@ -734,9 +734,9 @@ const MainComponent = ({ title, data, updatePackage, isAdmin }) => {
           </p>
         </div>
         <div style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; text-align: center; font-size: 60%; ">
-            <div>Pioneer Adventure Pvt. Ltd., Kathmandu, Nepal.</div>
-            <div>WhatsApp: +977 – 9851325603 | Phone: +977 - 1 – 4811067,</div>
-            <div>Email: pioneeradvent@gmail.com, Website: www.pioneeradventure.com</div>
+            <div>Business Challenges., Kathmandu, Nepal.</div>
+            <div>WhatsApp: 9863840616</div>
+            <div>Email: neupanebijen@gmail.com, </div>
           </div>
       </div>
       
@@ -759,9 +759,9 @@ const MainComponent = ({ title, data, updatePackage, isAdmin }) => {
           </table>
           <div style="position: absolute; top: 10px; right: 7.5%; width: 80px ; height: 80px; " ><img src='${Logo}'/></div>
           <div style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; text-align: center; font-size: 60%; ">
-            <div>Pioneer Adventure Pvt. Ltd., Kathmandu, Nepal.</div>
-            <div>WhatsApp: +977 – 9851325603 | Phone: +977 - 1 – 4811067,</div>
-            <div>Email: pioneeradvent@gmail.com, Website: www.pioneeradventure.com</div>
+            <div>Business Challenges, Kathmandu, Nepal.</div>
+            <div>WhatsApp: 9863840616,</div>
+            <div>Email: neupanebijen@gmail.com</div>
           </div>
       </div>
 
@@ -782,9 +782,9 @@ const MainComponent = ({ title, data, updatePackage, isAdmin }) => {
             .join("")}</div>
           <div style="position: absolute; top: 10px; right: 7.5%; width: 80px ; height: 80px; " ><img src='${Logo}'/></div>
           <div style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; text-align: center; font-size: 60%; ">
-          <div>Pioneer Adventure Pvt. Ltd., Kathmandu, Nepal.</div>
-          <div>WhatsApp: +977 – 9851325603 | Phone: +977 - 1 – 4811067,</div>
-          <div>Email: pioneeradvent@gmail.com, Website: www.pioneeradventure.com</div>
+          <div>Business Challenges, Kathmandu, Nepal.</div>
+            <div>WhatsApp: 9863840616,</div>
+            <div>Email: neupanebijen@gmail.com</div>
         </div>
       </div>
 
@@ -802,10 +802,9 @@ const MainComponent = ({ title, data, updatePackage, isAdmin }) => {
         }
           <br /> 
           <br />
-          <div style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; text-align: center; font-size: 60%; ">
-          <div>Pioneer Adventure Pvt. Ltd., Kathmandu, Nepal.</div>
-          <div>WhatsApp: +977 – 9851325603 | Phone: +977 - 1 – 4811067,</div>
-          <div>Email: pioneeradvent@gmail.com, Website: www.pioneeradventure.com</div>
+          <div>Business Challenges, Kathmandu, Nepal.</div>
+            <div>WhatsApp: 9863840616,</div>
+            <div>Email: neupanebijen@gmail.com</div>
         </div>
       </div>
       </div>
@@ -919,20 +918,14 @@ const MainComponent = ({ title, data, updatePackage, isAdmin }) => {
           </LowerMenu>
         )}
         <SideBar>
-          <a
-            href={`https://www.facebook.com/pioneeradventuretreks/`}
-            target="_blank"
-          >
+          <a href={`https://www.facebook.com/`} target="_blank">
             <img src={Facebook} alt="Facebook" width="40px" />
           </a>
-          <a
-            href="https://www.instagram.com/pioneer_expeditions/?"
-            target="_blank"
-          >
+          <a href="https://www.instagram.com/" target="_blank">
             <img src={Instagram} alt="Facebook" width="40px" />
           </a>
           <a
-            href={`https://api.whatsapp.com/send/?phone=9841678514&text=Welcome+to+pioneer&type=phone_number&app_absent=0`}
+            href={`https://api.whatsapp.com/send/?phone=9863840616&text=Hello+i+am+Bijen&type=phone_number&app_absent=0`}
             target="_blank"
           >
             <img src={Whatsapp} alt="Facebook" width="40px" />
