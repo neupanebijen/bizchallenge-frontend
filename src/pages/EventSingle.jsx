@@ -30,6 +30,7 @@ const EventSingle = ({ isAdmin }) => {
 
     getEventCall()
     window.scrollTo(0, 0)
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const [showDataPopup, setShowDataPopup] = useState(false)
@@ -40,20 +41,12 @@ const EventSingle = ({ isAdmin }) => {
   const [imageToCrop, setImageToCrop] = useState(undefined)
   const [croppedImage, setCroppedImage] = useState(undefined)
 
+  //eslint-disable-next-line no-unused-vars
   const [file, setFile] = useState(null)
 
   async function dataURLtoFile2(dataurl) {
     var arr2 = imageToCrop.split(","),
       mime = arr2[0].match(/:(.*?);/)[1]
-
-    // var arr = croppedImage.getAsFile().split(","),
-    //   bstr = arr[1],
-    //   n = bstr.length,
-    //   u8arr = new Uint8Array(n)
-    // while (n--) {
-    //   u8arr[n] = bstr.charCodeAt(n)
-    // }
-    let convertedFile
 
     const toDataURL = (url) =>
       fetch(url)

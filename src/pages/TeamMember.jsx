@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import styled from "styled-components"
 import { motion } from "framer-motion"
 import ContentBox from "../components/ContentBox"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 
 import ThirdPageComponent from "../components/NewSecondPageComponent"
 import InfoSection from "../components/InfoSection"
@@ -22,13 +22,13 @@ import {
 } from "../api/expeditions"
 
 const TeamMember = ({ isAdmin }) => {
-  const navigate = useNavigate()
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
   const location = useLocation()
 
+  // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState(
     location.state
       ? location.state
@@ -77,6 +77,7 @@ const TeamMember = ({ isAdmin }) => {
   const [imageToCrop, setImageToCrop] = useState(undefined)
   const [croppedImage, setCroppedImage] = useState(undefined)
 
+  // eslint-disable-next-line no-unused-vars
   const [file, setFile] = useState(null)
 
   async function dataURLtoFile2(dataurl) {
@@ -90,7 +91,6 @@ const TeamMember = ({ isAdmin }) => {
     // while (n--) {
     //   u8arr[n] = bstr.charCodeAt(n)
     // }
-    let convertedFile
 
     const toDataURL = (url) =>
       fetch(url)

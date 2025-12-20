@@ -30,6 +30,7 @@ const ExpeditionList = (props) => {
           )
         })
       : null
+    //eslint-disable-next-line
   }, [data, query])
 
   const [packageName, setPackageName] = useState("")
@@ -42,6 +43,7 @@ const ExpeditionList = (props) => {
   const [packageDestination, setPackageDestination] = useState("Nepal")
   const [packageRoute, setPackageRoute] = useState("")
 
+  //eslint-disable-next-line
   const classOptions = useMemo(
     () => [
       "over8000m",
@@ -59,12 +61,10 @@ const ExpeditionList = (props) => {
     []
   )
 
-  const destinationOption = useMemo(() => [
-    "Nepal",
-    "India",
-    "China",
-    "Pakistan",
-  ])
+  const destinationOption = useMemo(
+    () => ["Nepal", "India", "China", "Pakistan"],
+    []
+  )
 
   useEffect(() => {
     const getAllPackageCall = async () => {

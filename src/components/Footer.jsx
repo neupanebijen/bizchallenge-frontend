@@ -7,10 +7,8 @@ import Phone from "../assets/phone.svg"
 import Email from "../assets/email.svg"
 import Facebook from "../assets/facebook.svg"
 import Instagram from "../assets/instagram.svg"
-import Twitter from "../assets/twitter.svg"
 import Whatsapp from "../assets/whatsapp.svg"
 import Tripadvisor from "../assets/tripadvisor.svg"
-import FooterImg from "../assets/footer.jpg"
 
 const WidthContainer = styled.div`
   max-width: 90vw;

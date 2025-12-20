@@ -34,6 +34,8 @@ const InfoSection = ({
 
   const saveContent = async () => {
     data.content = contentHTML
+
+    //eslint-disable-next-line no-unused-vars
     const result = await updateData(data)
   }
 

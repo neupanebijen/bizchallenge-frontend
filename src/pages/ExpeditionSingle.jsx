@@ -33,6 +33,7 @@ const ExpeditionSingle = ({ isAdmin }) => {
 
     getPackageDataCall()
     window.scrollTo(0, 0)
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const updatePackageCall = async (value) => {
@@ -41,12 +42,12 @@ const ExpeditionSingle = ({ isAdmin }) => {
   }
 
   // update the related Package
-  const getRelatedPackage = (index) => {
-    console.log(index)
-    let newRelatedPackage = relatedPackages
-    newRelatedPackage[index] = data
-    return newRelatedPackage
-  }
+  // const getRelatedPackage = (index) => {
+  //   console.log(index)
+  //   let newRelatedPackage = relatedPackages
+  //   newRelatedPackage[index] = data
+  //   return newRelatedPackage
+  // }
 
   return (
     <motion.div exit={{ zIndex: 1, transition: { duration: 0.41, delay: 1 } }}>
@@ -87,6 +88,7 @@ const ExpeditionSingle = ({ isAdmin }) => {
                               height: "6rem",
                               width: "6rem",
                             }}
+                            alt="An Package container"
                           />
                           <h3>{value.name}</h3>
                         </RelatedPackageContainer>
@@ -125,39 +127,9 @@ const RelatedPackageContainer = styled(Link)`
   font-size: 1.8rem;
 `
 
-const Button = styled.a`
-  border: 0.18229vw solid white;
-  border-radius: 20rem;
-  color: #fff;
-  font-size: 1.041vw;
-  font-family: "SilkaRm";
-  text-decoration: none;
-
-  padding: 0.52vw 1.041vw;
-  cursor: pointer;
-
-  position: absolute;
-  top: 17vh;
-  right: ${(props) => props.right};
-  transition: transform 0.1s ease;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-
-  @media (max-width: 600px) {
-    font-size: 1.4rem;
-    border: 0.2rem solid white;
-    padding: 0.5rem 0.8rem;
-    top: 5.5vh;
-    right: ${(props) => props.second && "28vw"};
-  }
-`
-
 export default ExpeditionSingle
 
-{
-  /* <Button
+/* <Button
               href="http://45.115.217.25:81/enquiry?new=1"
               target="_blank"
               right="7vw"
@@ -172,4 +144,3 @@ export default ExpeditionSingle
             >
               Book Now
             </Button> */
-}

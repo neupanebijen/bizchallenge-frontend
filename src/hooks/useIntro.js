@@ -13,6 +13,7 @@ const useIntro = () => {
     hasTimePassed
       ? storage.setItem("timestamp", currTimestamp.toString())
       : storage.setItem("timestamp", timestamp.toString())
+    //eslint-disable-next-line
   }, [])
 
   return hasTimePassed

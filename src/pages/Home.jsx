@@ -9,7 +9,6 @@ import Menu from "../components/Menu"
 import Loading from "../components/Loading"
 import Carousel from "../components/Carousel/CarouselContainer"
 import Footer from "../components/Footer"
-import Review from "../components/Review"
 
 import Image1 from "../assets/image1.jpg"
 import Image2 from "../assets/image2.jpg"
@@ -23,8 +22,6 @@ import video6 from "../assets/video6.mp4"
 import video7 from "../assets/video7.mp4"
 import DownArrow from "../assets/downArrow.svg"
 import useWindowSize from "../hooks/useWindowSize"
-
-import { faA, faArrowDown } from "@fortawesome/free-solid-svg-icons"
 
 const Home = ({ setPageChangeColor }) => {
   const location = useLocation()
@@ -213,10 +210,12 @@ const Home = ({ setPageChangeColor }) => {
   useEffect(() => {
     location.state && setPageIndex(location.state.pageNumber)
     location.state && setData(pageData[location.state.pageNumber])
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     setPageChangeColor(data.titleColor)
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageIndex])
 
   const changePageData = (indexValue) => {
@@ -233,7 +232,7 @@ const Home = ({ setPageChangeColor }) => {
     // if (pageIndex === indexValue) {
     //   return
     // }
-    if (lowerMenuActive == false) {
+    if (lowerMenuActive === false) {
       setTimeout(() => {
         setData(pageData[indexValue])
         setPageIndex(indexValue)
@@ -340,6 +339,7 @@ const Home = ({ setPageChangeColor }) => {
     return () => {
       window.removeEventListener("keydown", keyDown)
     }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageIndex])
 
   const keyDown = (e) => {
@@ -857,12 +857,6 @@ const Home = ({ setPageChangeColor }) => {
   )
 }
 
-const ReviewTitle = styled.h1`
-  font-size: 3.2rem;
-  text-align: center;
-  margin-bottom: 1vh;
-`
-
 const ReviewContainer = styled.div`
   margin: 2vh 0 0 0;
   padding: 0 5vw;
@@ -1000,12 +994,6 @@ const LowerMenuText = styled.div`
   @media (max-width: 900px) {
     display: none;
   }
-`
-
-const lowerAni = keyframes`
-    0%{width: 0.9rem;}
-    50%{width: 13.5rem;}
-    100%{width: 0.9rem;}
 `
 
 const LowerMenuLink = styled.div`

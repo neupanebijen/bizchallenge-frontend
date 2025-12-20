@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useMemo } from "react"
-import styled, { keyframes } from "styled-components"
+import { useState, useMemo } from "react"
+import styled from "styled-components"
 import { HashLink } from "react-router-hash-link"
 import { motion, AnimatePresence } from "framer-motion"
 import { Link, useNavigate } from "react-router-dom"
@@ -7,14 +7,10 @@ import { Link, useNavigate } from "react-router-dom"
 import Image1 from "../assets/image1.jpg"
 import WhiteLogo from "../assets/logo.png"
 
-import Logo from "./Logo.jsx"
-
 import Hamburger from "../assets/hamburger.svg"
 import HamburgerWhite from "../assets/hamburgerWhite.svg"
 import HamburgerBlack from "../assets/HamburgerBlack.svg"
 import Search from "../assets/search.svg"
-
-import { getAllPackage } from "../api/expeditions"
 
 const Menu = ({
   changePageData,
@@ -27,7 +23,9 @@ const Menu = ({
   const [hoverMenu, setHoverMenu] = useState(0)
   const [menuQuery, setMenuQuery] = useState("")
 
+  // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState(null)
+  // eslint-disable-next-line no-unused-vars
   const navigate = useNavigate()
 
   // Search Functionality
@@ -115,9 +113,11 @@ const Menu = ({
                 </SubLink>
                 {menuQuery === "over8000m" && (
                   <HoverLink>
+                    {/**eslint- */}
                     {data !== null &&
-                      data.map((value, index) => {
-                        if (value.tags.includes("over8000m")) {
+                      data
+                        .filter((value) => value.tags.includes("over8000m"))
+                        .map((value, index) => {
                           return (
                             <SubLink
                               to={`/package/${value.route}`}
@@ -129,15 +129,15 @@ const Menu = ({
                               {value.name}
                             </SubLink>
                           )
-                        }
-                      })}
+                        })}
                   </HoverLink>
                 )}
                 {menuQuery === "over7000m" && (
                   <HoverLink>
                     {data !== null &&
-                      data.map((value, index) => {
-                        if (value.tags.includes("over7000m")) {
+                      data
+                        .filter((value) => value.tags.includes("over7000m"))
+                        .map((value, index) => {
                           return (
                             <SubLink
                               to={`/package/${value.route}`}
@@ -149,15 +149,15 @@ const Menu = ({
                               {value.name}
                             </SubLink>
                           )
-                        }
-                      })}
+                        })}
                   </HoverLink>
                 )}
                 {menuQuery === "peakClimbing" && (
                   <HoverLink>
                     {data !== null &&
-                      data.map((value, index) => {
-                        if (value.tags.includes("peakClimbing")) {
+                      data
+                        .filter((value) => value.tages.includes("peakClimbing"))
+                        .map((value, index) => {
                           return (
                             <SubLink
                               to={`/package/${value.route}`}
@@ -169,8 +169,7 @@ const Menu = ({
                               {value.name}
                             </SubLink>
                           )
-                        }
-                      })}
+                        })}
                   </HoverLink>
                 )}
               </SubLinks>

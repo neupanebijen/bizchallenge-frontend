@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import ReactCrop from "react-image-crop"
 import "react-image-crop/dist/ReactCrop.css"
-import demoImage from "../../assets/demo-image.jpg"
 
 function ImageCropper(props) {
   const { imageToCrop, onImageCropped } = props

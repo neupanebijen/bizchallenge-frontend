@@ -58,6 +58,7 @@ const SingleExpeditionCard = ({ title, duration, image, index, value }) => {
       default:
         setNewImage(Image1)
     }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

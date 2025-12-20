@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import styled from "styled-components"
 import { motion } from "framer-motion"
 import { Link, useNavigate } from "react-router-dom"
@@ -45,6 +45,7 @@ const Events = ({ isAdmin }) => {
   // Load existing events
   const [eventsData, setEventsData] = useState(null)
   const [newsData, setNewsData] = useState(null)
+  // eslint-disable-next-line no-unused-vars
   const [videoData, setVideoData] = useState(null)
 
   useEffect(() => {
@@ -76,6 +77,7 @@ const Events = ({ isAdmin }) => {
         )
       })
     setNewsData(newsDataComponent)
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [eventsData])
 
   useEffect(() => {
@@ -97,6 +99,7 @@ const Events = ({ isAdmin }) => {
         )
       })
     setVideoData(videoDataComponent)
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [eventsData])
 
   // Add a new event

@@ -5,7 +5,7 @@ import { sendMail } from "../api/expeditions"
 import { useParams } from "react-router-dom"
 
 import Heading from "./Heading"
-import Menu from './Menu'
+import Menu from "./Menu"
 
 const WidthContainer = styled.div`
   max-width: 85vw;
@@ -117,13 +117,13 @@ const Button = styled.div`
 `
 
 const InputTitle = styled.h1`
-  width: 100%; 
-  margin-top: 5%; 
+  width: 100%;
+  margin-top: 5%;
 `
 
 const MenuWithWidth = styled.div`
   width: 90vw;
-  margin: 0 auto; 
+  margin: 0 auto;
 `
 
 const ContactForm = () => {
@@ -136,7 +136,9 @@ const ContactForm = () => {
   const [email, setEmail] = useState("")
   const [subject, setSubject] = useState("")
   const [message, setMessage] = useState("")
+  // eslint-disable-next-line no-unused-vars
   const [packageName, setPackageName] = useState(data.packageName)
+  //eslint-disable-next-line no-unused-vars
   const [type, setType] = useState(data.type)
   const [noOfPeople, setNoOfPeople] = useState("")
   const [address, setAddress] = useState("")
@@ -175,83 +177,82 @@ const ContactForm = () => {
 
   return (
     <>
-    <MenuWithWidth>
-      <Menu color="#004a8c" />
-    </MenuWithWidth>
-    <OuterContainer>
-      <Background />
-      <Container id="Contact">
-        <Heading whiteText={type ? type: "Inquiry" } />
-        <FormContainer>
-          <InputTitle>Trip Details</InputTitle>
-          <InputStyled
-            value={packageName}
-            onChange={(e) => setPackageName(e.target.value)}
-            placeholder="Package Name"
-            disabled
-          />
-          <InputStyled
-            value={noOfPeople}
-            onChange={(e) => setNoOfPeople(e.target.value)}
-            placeholder="Number of People"
-          />
-          <InputTitle>Your Details</InputTitle>
-          <InputStyled
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Full Name"
-          />
-          <InputStyled
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            placeholder="Phone Number"
-            type="tel"
-          />
-          <InputStyled
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="E-mail"
-            type="email"
-            pattern="[^ @]*@[^ @]*" 
-          />
-          <InputStyled
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-            placeholder="Country"
-          />
-          <InputStyled
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            placeholder="Address"
-          />
-          <InputTitle>Arrival Details</InputTitle>
-          <InputStyled
-            value={arrival}
-            onChange={(e) => setArrival(e.target.value)}
-            placeholder="Arrival"
-          />
-          <InputStyled
-            value={departure}
-            onChange={(e) => setDeparture(e.target.value)}
-            placeholder="Departure"
-          />
-          <InputStyled
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-            placeholder="Subject"
-          />
+      <MenuWithWidth>
+        <Menu color="#004a8c" />
+      </MenuWithWidth>
+      <OuterContainer>
+        <Background />
+        <Container id="Contact">
+          <Heading whiteText={type ? type : "Inquiry"} />
+          <FormContainer>
+            <InputTitle>Trip Details</InputTitle>
+            <InputStyled
+              value={packageName}
+              onChange={(e) => setPackageName(e.target.value)}
+              placeholder="Package Name"
+              disabled
+            />
+            <InputStyled
+              value={noOfPeople}
+              onChange={(e) => setNoOfPeople(e.target.value)}
+              placeholder="Number of People"
+            />
+            <InputTitle>Your Details</InputTitle>
+            <InputStyled
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Full Name"
+            />
+            <InputStyled
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              placeholder="Phone Number"
+              type="tel"
+            />
+            <InputStyled
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="E-mail"
+              type="email"
+              pattern="[^ @]*@[^ @]*"
+            />
+            <InputStyled
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              placeholder="Country"
+            />
+            <InputStyled
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder="Address"
+            />
+            <InputTitle>Arrival Details</InputTitle>
+            <InputStyled
+              value={arrival}
+              onChange={(e) => setArrival(e.target.value)}
+              placeholder="Arrival"
+            />
+            <InputStyled
+              value={departure}
+              onChange={(e) => setDeparture(e.target.value)}
+              placeholder="Departure"
+            />
+            <InputStyled
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+              placeholder="Subject"
+            />
 
-          <InputTitle>Message</InputTitle>
-          <MessageBox
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Message"
-          />
-        </FormContainer>
-        <Button onClick={() => onSubmit()}>SEND</Button>
-      </Container>
-    </OuterContainer>
-
+            <InputTitle>Message</InputTitle>
+            <MessageBox
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Message"
+            />
+          </FormContainer>
+          <Button onClick={() => onSubmit()}>SEND</Button>
+        </Container>
+      </OuterContainer>
     </>
   )
 }

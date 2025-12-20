@@ -195,6 +195,7 @@ function ShowAnimation({ pageChangeColor, isFirstLoad, setIsFirstLoad }) {
     setTimeout(() => {
       setShowAnimation(false)
     }, 1500)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
 
   return (

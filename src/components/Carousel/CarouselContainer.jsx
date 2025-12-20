@@ -1,22 +1,14 @@
-import React, { useState, useMemo } from "react"
+import { useMemo } from "react"
 import cn from "classnames"
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 import { motion } from "framer-motion"
 import "./styles.css"
-
-import Image1 from "../../assets/Slider1.JPG"
 
 import Slider1 from "../../assets/SliderContrast15.JPG"
 import Slider3 from "../../assets/SliderContrast1.JPG"
 import Slider2 from "../../assets/SliderContrast3.JPG"
 import Slider4 from "../../assets/SliderContrast9.JPG"
 import Slider5 from "../../assets/SliderContrast14.jpg"
-import useWindowSize from "../../hooks/useWindowSize"
-
-/*
- * Read the blog post here:
- * https://letsbuildui.dev/articles/building-a-vertical-carousel-component-in-react
- */
 
 let data = [
   {
@@ -337,9 +329,5 @@ const CardComponent = ({
     </button>
   )
 }
-
-const Image = styled(motion.img)``
-
-// }translateX(${i > activeIndex ? 200 : 100}px)
 
 export default VerticalCarousel

@@ -103,6 +103,7 @@ const MainComponent = ({ title, data, updatePackage, isAdmin }) => {
 
   const saveItinerary = async () => {
     data.itinerary = itineraryData
+    // eslint-disable-next-line no-unused-vars
     const result = await updatePackage(data)
     navigate(0)
   }
@@ -119,6 +120,7 @@ const MainComponent = ({ title, data, updatePackage, isAdmin }) => {
 
   const saveIncludes = async () => {
     data.includes = includesData
+    //eslint-disable-next-line no-unused-vars
     const result = await updatePackage(data)
     navigate(0)
   }
@@ -139,6 +141,7 @@ const MainComponent = ({ title, data, updatePackage, isAdmin }) => {
 
   const saveExcludes = async () => {
     data.excludes = excludesData
+    //eslint-disable-next-line no-unused-vars
     const result = await updatePackage(data)
     navigate(0)
   }
@@ -159,6 +162,7 @@ const MainComponent = ({ title, data, updatePackage, isAdmin }) => {
 
   const saveBooking = async () => {
     data.fixedDepartures = bookingData
+    //eslint-disable-next-line no-unused-vars
     const result = await updatePackage(data)
     navigate(0)
   }
@@ -183,7 +187,6 @@ const MainComponent = ({ title, data, updatePackage, isAdmin }) => {
     // while (n--) {
     //   u8arr[n] = bstr.charCodeAt(n)
     // }
-    let convertedFile
 
     const toDataURL = (url) =>
       fetch(url)
@@ -293,18 +296,21 @@ const MainComponent = ({ title, data, updatePackage, isAdmin }) => {
         <a
           href={`https://www.facebook.com/sharer/sharer.php?u=http%3A//45.115.217.62/package/${data.route}`}
           target="_blank"
+          rel="noreferrer"
         >
           <img src={Facebook} alt="Facebook" width="40px" />
         </a>
         <a
           href="https://www.instagram.com/pioneer_expeditions/?"
           target="_blank"
+          rel="noreferrer"
         >
           <img src={Instagram} alt="Facebook" width="40px" />
         </a>
         <a
           href={`https://twitter.com/intent/tweet?text=Check%20out%20pioneer%20on%3A%20pioneeradventure.com/package/${data.route}`}
           target="_blank"
+          rel="noreferrer"
         >
           <img src={Twitter} alt="Facebook" width="40px" />
         </a>
@@ -421,10 +427,6 @@ const MainComponent = ({ title, data, updatePackage, isAdmin }) => {
 
     return () => clearInterval(imageInterval)
   }, [data, resetInterval])
-
-  console.log("Logging data:  ", data)
-
-  const pdfRef = useRef()
 
   const pdfGen = useCallback(() => {
     const jspdf = new jsPDF("p", "pt", "a4", true)
@@ -809,66 +811,6 @@ const MainComponent = ({ title, data, updatePackage, isAdmin }) => {
       </div>
       </div>
     `
-
-    //     const requiredHTML = `<div>
-    // ${pdfRef.current}
-    // <div style="display: flex; justify-content: center; "><img src='${Logo}' style="width: 200px; transform: translateX(-10px);  " /></div>
-    // <br />
-    // <br />
-    // <h1 style="color:#004a8c; text-align: center;">${title}</h1>
-    // <div style="display: flex; justify-content: center; width: 100%; transform: translateX(-6px) translateY(-8px); "><div style="width: 152px; height: 2px; text-align: center; background: #004a8c"></div></div>
-    // <br/>
-    // <br/>
-    // <div style="display: flex; justify-content: center; "><img src='${apiImageLink}${
-    //   data.image[0]
-    // }' style="width: 100%;border-radius: 50px;" alt="Image"/></div>
-    // <br />
-    //   <div style="text-align: left"><p>${content}</p></div>
-    //   <br />
-    //   <br />
-    //   <h1 style="page-break-before: always;color:#004a8c">Itinerary</h1>
-
-    //   <p>${data.itinerary
-    //     .map((data) => {
-    //       return `${data.day} :  ${data.title} <br />`
-    //     })
-    //     .join("")}</p>
-    //   <br />
-    //   <br />
-    //   <h1 style="color:#004a8c">Includes</h1>
-    // <p>${data.includes
-    //   .map((data, index) => {
-    //     return `${index + 1}. ${data} <br />`
-    //   })
-    //   .join("")}</p>
-    //   <br />
-    //   <br />
-    //   <h1 style="color:#004a8c">Excludes</h1>
-    // <p>${data.excludes
-    //   .map((data, index) => {
-    //     return `${index + 1}. ${data} <br />`
-    //   })
-    //   .join("")}</p>
-    //   <br />
-    //   <br />
-    //   <br />
-    //   ${
-    //     data.tags.includes("over8000m")
-    //       ? over8000m
-    //       : data.tags.includes("over7000m")
-    //       ? over7000m
-    //       : data.tags.includes("over6000m")
-    //       ? over6000m
-    //       : trekking
-    //   }
-    //   <br />
-    //   <br />
-    //   <h2 style="color:#004a8c">Head Office</h2>
-    // <p><b>Sagarmatha Chowk, Budhanilkantha 44600, Kathmandu</b></p>
-    //   <p><b>Contact no</b>: 01-4811067</p>
-    //   <p><b>Email</b>: pioneeradvent@gmail.com</p>
-    //   </div>
-    // `
     // Generate PDF
     const generatePDF = () => {
       console.log("logging Data from pdfgen", data)
@@ -918,15 +860,20 @@ const MainComponent = ({ title, data, updatePackage, isAdmin }) => {
           </LowerMenu>
         )}
         <SideBar>
-          <a href={`https://www.facebook.com/`} target="_blank">
+          <a
+            href={`https://www.facebook.com/`}
+            target="_blank"
+            rel="noreferrer"
+          >
             <img src={Facebook} alt="Facebook" width="40px" />
           </a>
-          <a href="https://www.instagram.com/" target="_blank">
+          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
             <img src={Instagram} alt="Facebook" width="40px" />
           </a>
           <a
             href={`https://api.whatsapp.com/send/?phone=9863840616&text=Hello+i+am+Bijen&type=phone_number&app_absent=0`}
             target="_blank"
+            rel="noreferrer"
           >
             <img src={Whatsapp} alt="Facebook" width="40px" />
           </a>

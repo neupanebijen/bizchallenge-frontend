@@ -14,7 +14,7 @@ const Destination = ({ isAdmin }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, location)
+  }, [location])
 
   const [data, setData] = useState(null)
 

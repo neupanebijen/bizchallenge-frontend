@@ -1,8 +1,5 @@
-import React, { useEffect } from "react"
 import { motion } from "framer-motion"
 
-import ThirdPageComponent from "../components/NewSecondPageComponent"
-import Image from "../assets/image18.jpg"
 import ContactForm from "../components/Contacts"
 import Footer from "../components/Footer"
 

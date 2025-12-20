@@ -8,15 +8,15 @@ const Gears = () => {
   return (
     <Container>
       <label>Gears for over 6000m</label>
-      <a href={Gears6000} target="_blank">
+      <a href={Gears6000} target="_blank" rel="noopener noreferrer">
         Download
       </a>
       <label>Gears for over 7000m</label>
-      <a href={Gears7000} target="_blank">
+      <a href={Gears7000} target="_blank" rel="noopener noreferrer">
         Download
       </a>
       <label>Gears for over 8000m</label>
-      <a href={Gears8000} target="_blank">
+      <a href={Gears8000} target="_blank" rel="noopener noreferrer">
         Download
       </a>
     </Container>

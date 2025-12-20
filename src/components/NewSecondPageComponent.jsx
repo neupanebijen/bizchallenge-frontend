@@ -218,44 +218,6 @@ const SeconPageImageContainer = styled.div`
   }
 `
 
-// Transfrom
-// transform: translateY(-${(props) => props.scrollY * 0.1}px)
-// rotateZ(${(props) => props.scrollY * 0.01}deg)
-// scale(${(props) => 1 - props.scrollY * 0.0001}) translateZ(0);
-
-const SeconPageTransformLayer = styled.div`
-  width: 50vw;
-  height: 60vh;
-
-  margin: 0 auto;
-  margin-top: 0vh;
-
-  position: absolute;
-  top: 20vh;
-  left: 25vw;
-  outline: 1px solid transparent;
-  border: 1px solid transparent;
-
-  transform: translateY(-${(props) => props.scrollY * 0.1}px)
-    rotateZ(${(props) => props.scrollY * 0.01}deg)
-    scale(${(props) => 1 - props.scrollY * 0.0001}) translateZ(0);
-
-  transition: transform 0.2s linear;
-  will-change: transform;
-
-  background: rgba(0, 0, 0, 0.3);
-
-  &:before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 1rem solid black;
-  }
-`
-
 const OtherBox = styled.div`
   margin-top: 100vh;
   background: #fff;

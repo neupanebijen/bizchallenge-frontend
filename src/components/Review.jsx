@@ -2,7 +2,6 @@ import styled from "styled-components"
 import TestimonialIcon from "../assets/Testimonial1.jpeg"
 import TestimonialIcon2 from "../assets/Testimonial2.jpeg"
 import TestimonialIcon3 from "../assets/Testimonial3.jpeg"
-import CardQuote from "./CardQuote.jsx"
 import { Link } from "react-router-dom"
 
 import Carousel from "react-multi-carousel"
@@ -89,25 +88,6 @@ const CardText = styled.div`
   text-decoration: none;
 `
 
-const QuoteIcon = styled(CardQuote)`
-  position: absolute;
-
-  top: -15%;
-  left: 30%;
-
-  @media (max-width: 900px) {
-    transform: scale(0.6);
-    left: -15%;
-    top: -13%;
-  }
-
-  @media (max-width: 600px) {
-    transform: scale(0.4);
-    left: 8%;
-    top: -25%;
-  }
-`
-
 const CardStyle = styled.div`
   position: relative;
   width: 80%;
@@ -142,16 +122,6 @@ const CardStyle = styled.div`
     margin-top: 4rem;
 
     min-height: 15rem;
-  }
-`
-
-const CardContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-    margin-top: 0;
   }
 `
 

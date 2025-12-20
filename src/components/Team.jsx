@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react"
-import { useInView } from "react-intersection-observer"
-import { FadeInUpText } from "./Animations"
 import styled from "styled-components"
 import { motion } from "framer-motion"
 import { HashLink as Link } from "react-router-hash-link"
@@ -86,7 +84,11 @@ const Team = ({ isAdmin }) => {
         marginTop: "6vh",
       }}
     >
-      <p>There is an issue with api calls here. Api calls are fine, but it needs to to go back to about us page and reload to see the affeteced changes. Soln: State/API re-calls after data submission/update. </p>    
+      <p>
+        There is an issue with api calls here. Api calls are fine, but it needs
+        to to go back to about us page and reload to see the affeteced changes.
+        Soln: State/API re-calls after data submission/update.{" "}
+      </p>
       {/* Add a team member */}
       {showDataPopup && (
         <DataPopup>
@@ -403,20 +405,6 @@ const MemberSnippetContainer = styled.div`
   max-width: 100vh;
   flex-wrap: wrap;
   overflow: hidden;
-`
-
-const HeroImageCircleContainer = styled(motion.div)`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4rem;
-  margin-bottom: 4vh;
-  &.animate {
-    animation: 0.5s ${FadeInUpText} ease-out forwards;
-  }
-
-  @media (max-width: 1340px) {
-    justify-content: space-around;
-  }
 `
 
 const HeroImageCircle = styled(motion.div)`
