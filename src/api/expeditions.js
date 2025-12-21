@@ -1,9 +1,9 @@
 import axios from "axios"
 
-// const apiUrl = "http://localhost:8000/mainRoute"
-// export const apiImageLink = "http://localhost:8000/uploads/"
-const apiUrl = "/mainRoute"
-export const apiImageLink = "/uploads/"
+const apiUrl = "http://localhost:8000/mainRoute"
+export const apiImageLink = "http://localhost:8000/uploads/"
+// const apiUrl = "/mainRoute"
+// export const apiImageLink = "/uploads/"
 
 export const getAllPackage = async () => {
   try {

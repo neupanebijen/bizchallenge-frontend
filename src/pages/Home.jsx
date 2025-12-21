@@ -661,7 +661,7 @@ const Home = ({ setPageChangeColor }) => {
               key={data.key}
             >
               {/* Animation */}
-              {animationStart && (
+              {/* {animationStart && (
                 <LowerMenuAnimator>
                   <LowerMenuAnimatorLine index={0} w={12} />
                   <LowerMenuAnimatorLine index={1} w={10} />
@@ -669,7 +669,7 @@ const Home = ({ setPageChangeColor }) => {
                   <LowerMenuAnimatorLine index={3} w={8} />
                   <LowerMenuAnimatorLine index={4} w={11} />
                 </LowerMenuAnimator>
-              )}
+              )} */}
               <LowerMenuLink
                 to="/"
                 className={pageIndex === 1 ? "active" : ""}
