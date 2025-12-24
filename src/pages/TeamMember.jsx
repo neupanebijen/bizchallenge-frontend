@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import styled from "styled-components"
 import { motion } from "framer-motion"
 import ContentBox from "../components/ContentBox"
-import { useLocation, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
 import ThirdPageComponent from "../components/NewSecondPageComponent"
 import InfoSection from "../components/InfoSection"
@@ -23,7 +23,6 @@ import {
 } from "../api/expeditions"
 
 const TeamMember = ({ isAdmin }) => {
-  const location = useLocation()
   const { memberId } = useParams()
 
   // eslint-disable-next-line no-unused-vars

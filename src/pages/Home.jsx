@@ -203,6 +203,7 @@ const Home = ({ setPageChangeColor }) => {
   const [wheelActive, setWheelActive] = useState(true)
   const [touchActive, setTouchActive] = useState(true)
   const [touchTrack, setTouchTrack] = useState(0)
+  //eslint-disable-next-line no-unused-vars
   const [animationStart, setAnimationStart] = useState(false)
 
   const showAnimation = useIntro()
@@ -660,16 +661,6 @@ const Home = ({ setPageChangeColor }) => {
               lowerMenuActive={lowerMenuActive}
               key={data.key}
             >
-              {/* Animation */}
-              {/* {animationStart && (
-                <LowerMenuAnimator>
-                  <LowerMenuAnimatorLine index={0} w={12} />
-                  <LowerMenuAnimatorLine index={1} w={10} />
-                  <LowerMenuAnimatorLine index={2} w={13} />
-                  <LowerMenuAnimatorLine index={3} w={8} />
-                  <LowerMenuAnimatorLine index={4} w={11} />
-                </LowerMenuAnimator>
-              )} */}
               <LowerMenuLink
                 to="/"
                 className={pageIndex === 1 ? "active" : ""}
@@ -871,46 +862,6 @@ const FooterContainer = styled.div`
   width: 100vw;
   z-index: 1;
   height: 50vh;
-`
-
-const AnimatorAnimation = (w, i) => keyframes`
-  0 {width: 0.9rem}
-  ${20 + i * 10}% {width: ${w}rem}
-  100%{ width : 0}
-`
-
-const LowerMenuAnimatorLine = styled.div`
-  width: 0.9rem;
-  height: 2.5rem;
-  background: #fff;
-  border-top-left-radius: 20%;
-  border-bottom-left-radius: 20%;
-  z-index: 4;
-
-  position: absolute;
-  top: ${(props) => props.index * 4.6}vh;
-  right: 0rem;
-  animation: ${(props) =>
-      AnimatorAnimation(props.w ? props.w : 10, props.index)}
-    1s forwards;
-
-  @media (max-width: 900px) {
-    width: 2rem;
-    height: 0.9rem;
-  }
-`
-
-const LowerMenuAnimator = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  cursor: pointer;
-  margin-top: 1.3rem;
-  z-index: 14;
 `
 
 const upAndDown = keyframes`

@@ -1,24 +1,9 @@
 import axios from "axios"
 
-const apiUrl = "http://localhost:8000/mainRoute"
-export const apiImageLink = "http://localhost:8000/uploads/"
-// const apiUrl = "/mainRoute"
-// export const apiImageLink = "/uploads/"
-
-export const getTeamMember = async (memberId) => {
-  if (!memberId) return { success: false, message: "No member ID provided" }
-  try {
-    const result = await axios({
-      method: "post",
-      url: `${apiUrl}/getATeamMember`,
-      data: { memberId: memberId },
-    })
-    return result.data
-  } catch (e) {
-    console.log(e.toString())
-    return { success: false, message: "Error fetching team member" }
-  }
-}
+// const apiUrl = "http://localhost:8000/mainRoute"
+// export const apiImageLink = "http://localhost:8000/uploads/"
+const apiUrl = "/mainRoute"
+export const apiImageLink = "/uploads/"
 
 export const getAllPackage = async () => {
   try {

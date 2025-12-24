@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import styled from "styled-components"
 import { HashLink } from "react-router-hash-link"
 import { motion, AnimatePresence } from "framer-motion"
@@ -11,6 +11,7 @@ import Hamburger from "../assets/hamburger.svg"
 import HamburgerWhite from "../assets/hamburgerWhite.svg"
 import HamburgerBlack from "../assets/HamburgerBlack.svg"
 import Search from "../assets/search.svg"
+import { getAllPackage } from "../api/expeditions"
 
 const Menu = ({
   changePageData,
@@ -21,6 +22,8 @@ const Menu = ({
 }) => {
   const [toggleMenu, setToggleMenu] = useState(false)
   const [hoverMenu, setHoverMenu] = useState(0)
+
+  //eslint-disable-next-line no-unused-vars
   const [menuQuery, setMenuQuery] = useState("")
 
   // eslint-disable-next-line no-unused-vars
@@ -40,18 +43,18 @@ const Menu = ({
   }, [data, query])
 
   // Get data
-  // useEffect(() => {
-  //   const getAllPackageCall = async () => {
-  //     const result = await getAllPackage()
-  //     let preData = result.result
-  //     preData = preData.sort(
-  //       (value1, value2) => value1.packageNo - value2.packageNo
-  //     )
-  //     setData(preData)
-  //   }
+  useEffect(() => {
+    const getAllPackageCall = async () => {
+      const result = await getAllPackage()
+      let preData = result.result
+      preData = preData.sort(
+        (value1, value2) => value1.packageNo - value2.packageNo
+      )
+      setData(preData)
+    }
 
-  //   getAllPackageCall()
-  // }, [])
+    getAllPackageCall()
+  }, [])
 
   const menuClicked = (e, index) => {
     if (!isHomePage) return
@@ -84,7 +87,11 @@ const Menu = ({
         )}
         {!hideMenu && (
           <MenuLink
-            to="/packages"
+            onClick={() => {
+              if (!isHomePage) navigate("/packages")
+              changePageData(1)
+              setHoverMenu(0)
+            }}
             color={color}
             state={{ pageNumber: 1 }}
             onMouseEnter={() => setHoverMenu(1)}
@@ -111,67 +118,6 @@ const Menu = ({
                 >
                   Peak Climbing
                 </SubLink>
-                {menuQuery === "over8000m" && (
-                  <HoverLink>
-                    {/**eslint- */}
-                    {data !== null &&
-                      data
-                        .filter((value) => value.tags.includes("over8000m"))
-                        .map((value, index) => {
-                          return (
-                            <SubLink
-                              to={`/package/${value.route}`}
-                              state={{
-                                _id: value._id,
-                                index: index,
-                              }}
-                            >
-                              {value.name}
-                            </SubLink>
-                          )
-                        })}
-                  </HoverLink>
-                )}
-                {menuQuery === "over7000m" && (
-                  <HoverLink>
-                    {data !== null &&
-                      data
-                        .filter((value) => value.tags.includes("over7000m"))
-                        .map((value, index) => {
-                          return (
-                            <SubLink
-                              to={`/package/${value.route}`}
-                              state={{
-                                _id: value._id,
-                                index: index,
-                              }}
-                            >
-                              {value.name}
-                            </SubLink>
-                          )
-                        })}
-                  </HoverLink>
-                )}
-                {menuQuery === "peakClimbing" && (
-                  <HoverLink>
-                    {data !== null &&
-                      data
-                        .filter((value) => value.tages.includes("peakClimbing"))
-                        .map((value, index) => {
-                          return (
-                            <SubLink
-                              to={`/package/${value.route}`}
-                              state={{
-                                _id: value._id,
-                                index: index,
-                              }}
-                            >
-                              {value.name}
-                            </SubLink>
-                          )
-                        })}
-                  </HoverLink>
-                )}
               </SubLinks>
             ) : (
               ""
@@ -180,7 +126,11 @@ const Menu = ({
         )}
         {!hideMenu && (
           <MenuLink
-            to="/trekkings"
+            onClick={() => {
+              if (!isHomePage) navigate("/trekkings")
+              changePageData(2)
+              setHoverMenu(0)
+            }}
             color={color}
             state={{ pageNumber: 2 }}
             onMouseEnter={() => setHoverMenu(2)}
@@ -205,7 +155,11 @@ const Menu = ({
         )}
         {!hideMenu && (
           <MenuLink
-            to="/destinations"
+            onClick={() => {
+              if (!isHomePage) navigate("/destinations")
+              changePageData(3)
+              setHoverMenu(0)
+            }}
             color={color}
             state={{ pageNumber: 3 }}
             onMouseEnter={() => setHoverMenu(4)}
@@ -226,16 +180,27 @@ const Menu = ({
         )}
         {!hideMenu && (
           <MenuLink
-            to="/events"
+            onClick={() => {
+              if (!isHomePage) navigate("/events")
+              changePageData(4)
+              setHoverMenu(0)
+            }}
             color={color}
             state={{ pageNumber: 4 }}
-            onClick={(e) => menuClicked(e, 4)}
           >
             EVENTS
           </MenuLink>
         )}
         {!hideMenu && (
-          <MenuLink to="/usefulInfo" color={color} state={{ pageNumber: 5 }}>
+          <MenuLink
+            onClick={() => {
+              if (!isHomePage) navigate("/usefulInfo")
+              changePageData(5)
+              setHoverMenu(0)
+            }}
+            color={color}
+            state={{ pageNumber: 5 }}
+          >
             USEFUL INFO
           </MenuLink>
         )}
@@ -382,22 +347,6 @@ const HamburgerMenu = ({ closeMenu, changePageData, color, isHomePage }) => {
 const NewLogo = styled.img`
   width: 150px;
 `
-
-const HoverLink = styled.div`
-  position: absolute;
-  left: 100%;
-  top: 0;
-  width: 100%;
-
-  background: #004a8c;
-  width: 200%;
-
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10% 5% 5% 5%;
-`
-
 const SearchBox = styled.div`
   position: absolute;
   right: 0;
