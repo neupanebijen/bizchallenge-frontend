@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import styled from "styled-components"
 import { motion } from "framer-motion"
 import ContentBox from "../components/ContentBox"
-import { useLocation } from "react-router-dom"
+import { useLocation, useParams } from "react-router-dom"
 
 import ThirdPageComponent from "../components/NewSecondPageComponent"
 import InfoSection from "../components/InfoSection"
@@ -19,25 +19,67 @@ import {
   editTeamMember,
   addPackageImage,
   apiImageLink,
+  getATeamMember,
 } from "../api/expeditions"
 
 const TeamMember = ({ isAdmin }) => {
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
   const location = useLocation()
+  const { memberId } = useParams()
 
   // eslint-disable-next-line no-unused-vars
-  const [data, setData] = useState(
-    location.state
-      ? location.state
-      : {
-          name: "Loading.. ",
+  // const [data, setData] = useState(
+  //   location.state
+  //     ? location.state
+  //     : {
+  //         name: "Loading.. ",
+  //         image: Image9,
+  //         information: "Loading..",
+  //       }
+  // )
+
+  // Temporary transfer by using params
+  const [data, setData] = useState({})
+
+  useEffect(() => {
+    if (!memberId) return
+
+    const fetchMember = async () => {
+      try {
+        const result = await getATeamMember(memberId)
+        console.log("Logging from Team Meamber :", result)
+        setData((prev) => ({
+          ...prev,
+          ...result.result,
+        }))
+      } catch {
+        setData({
+          name: "Error Loading Data",
+          information: "Please try again later",
           image: Image9,
-          information: "Loading..",
-        }
-  )
+        })
+      }
+    }
+
+    fetchMember()
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    setMemberDetails({
+      _id: data._id,
+      name: data.name,
+      role: data.role,
+      image: data.image,
+      information: data.information,
+      tag: data.tag,
+      certificates: data.certificates,
+      facebook: data.facebook,
+      twitter: data.twitter,
+      instagram: data.instagram,
+      phoneNo: data.phoneNo,
+      email: data.email,
+    })
+  }, [data])
 
   // editing the team member data
   const [showDataPopup, setShowDataPopup] = useState(false)
@@ -59,18 +101,21 @@ const TeamMember = ({ isAdmin }) => {
   const editMemberDetails = (field, value) => {
     const newMemberDetails = memberDetails
     newMemberDetails[`${field}`] = value
-    setMemberDetails({ ...newMemberDetails })
+    setMemberDetails((prev) => ({ ...prev, [field]: value }))
   }
 
+  // Add a fetch function and implement sate change once the fetch is completed.
   const saveMemberDetails = async () => {
     const result = await editTeamMember(memberDetails)
-    console.log(result)
     if (result.success) {
+      setData((prev) => ({ ...prev, ...memberDetails }))
       alert("Member Successfully added. Please refresh to see the changes")
     } else {
       alert("Something went wrong. Please try again later")
     }
   }
+
+  console.log("Data state: ", data)
 
   // Image handling
   // Working with Image Cropper
@@ -162,13 +207,16 @@ const TeamMember = ({ isAdmin }) => {
 
     const result = await addPackageImage(formData, config)
     if (result.success) {
-      console.log(memberDetails)
-      let newMemberDetails = memberDetails
-      newMemberDetails.image = result.filename
-      const response = await editTeamMember(newMemberDetails)
+      const updated = {
+        ...memberDetails,
+        image: result.filename,
+      }
+      setMemberDetails(updated)
+      const response = await editTeamMember(updated)
       console.log(response)
       if (response.success) {
         alert("Success. Please refresh to see the changes")
+        window.location.reload()
       }
     } else {
       alert("Something went wrong. Please try again")
@@ -176,9 +224,12 @@ const TeamMember = ({ isAdmin }) => {
   }
 
   const updateData = async ({ content }) => {
-    let newMemberDetails = memberDetails
-    newMemberDetails.information = content
-    const result = await editTeamMember(newMemberDetails)
+    const updated = {
+      ...memberDetails,
+      information: content,
+    }
+    setMemberDetails(updated)
+    const result = await editTeamMember(updated)
     if (!result.success) {
       alert("Something went wrong. Please try again later")
     }
@@ -293,6 +344,7 @@ const TeamMember = ({ isAdmin }) => {
             isAdmin={isAdmin}
             data={{ content: data.information }}
             updateData={updateData}
+            key={data._id}
           />
         </ContentBox>
 

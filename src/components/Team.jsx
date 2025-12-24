@@ -71,7 +71,8 @@ const Team = ({ isAdmin }) => {
     if (result.success) {
       const newMemberData = allMembersData.filter((value, i) => i !== value)
       setAllMembersData([...newMemberData])
-      alert("Member removed")
+      alert("Member removed.")
+      window.location.reload()
     }
   }
 
@@ -234,7 +235,7 @@ const ScrollingMembers = ({
                 )}
                 <HeroImageCircle2
                   as={Link}
-                  to="/teamMember"
+                  to={`/teamMember/${value._id}`}
                   state={{
                     _id: value._id,
                     name: value.name,

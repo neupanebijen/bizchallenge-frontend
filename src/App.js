@@ -159,7 +159,10 @@ function App() {
             element={<ContactUs isAdmin={isAdmin} />}
           />
           <Route path="contactUs" element={<Inquiry isAdmin={isAdmin} />} />
-          <Route path="teamMember" element={<TeamMember isAdmin={isAdmin} />} />
+          <Route
+            path="teamMember/:memberId"
+            element={<TeamMember isAdmin={isAdmin} />}
+          />
           <Route
             path="nepal"
             element={<DestinationNepal isAdmin={isAdmin} />}

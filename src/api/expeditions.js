@@ -5,6 +5,21 @@ export const apiImageLink = "http://localhost:8000/uploads/"
 // const apiUrl = "/mainRoute"
 // export const apiImageLink = "/uploads/"
 
+export const getTeamMember = async (memberId) => {
+  if (!memberId) return { success: false, message: "No member ID provided" }
+  try {
+    const result = await axios({
+      method: "post",
+      url: `${apiUrl}/getATeamMember`,
+      data: { memberId: memberId },
+    })
+    return result.data
+  } catch (e) {
+    console.log(e.toString())
+    return { success: false, message: "Error fetching team member" }
+  }
+}
+
 export const getAllPackage = async () => {
   try {
     const result = await axios({
@@ -142,6 +157,20 @@ export const removeTeamMember = async (data) => {
     return result.data
   } catch (e) {
     console.log(e)
+  }
+}
+
+export const getATeamMember = async (data) => {
+  try {
+    const result = await axios({
+      method: "post",
+      url: `${apiUrl}/getATeamMember`,
+      data: { memberId: data },
+    })
+    return result.data
+  } catch (e) {
+    console.log(e)
+    return { success: false, message: "Error fetching team member" }
   }
 }
 
