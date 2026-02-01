@@ -1,3 +1,4 @@
+(To be refactored in next.js and typescript in coming months) 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
